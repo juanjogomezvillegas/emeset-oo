@@ -2,7 +2,7 @@
 
 ## El framework per estudiants de 2n DAW, millorat incloent patrons de software
 
-Versió lite amb orientació a objectes del "Framework" Emeset.
+Versió lite amb orientació a objectes del "Framework" [Emeset]{https://github.com/Emeset-mvc/emeset-lite}.
 
 L'objectiu d'Emeset és introduir el patró MVC (Model- Vista-Controlador) utilitzant funcionalitats bàsiques del llenguatge PHP.
 
