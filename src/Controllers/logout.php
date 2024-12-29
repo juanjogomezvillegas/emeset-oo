@@ -10,9 +10,7 @@ class ControllerLogout implements \Controller
     {
         $config = $request->get("SESSION", "config");
 
-        $config["db"]["user"] = "";
-        $config["db"]["pass"] = "";
-        $config["db"]["connected"] = 0;
+        $response->setCookie("connected", 0);
 
         $response->redirect("Location: index.php");
     }

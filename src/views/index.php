@@ -15,6 +15,8 @@
             <?php if (isset($name)) { ?>
                 <p><?= $name; ?></p>
             <?php } ?>
+            <br>
+            <a href="http://192.168.0.10/emeset-oo/public/index.php?r=logout">logout</a>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f"></script>
     </body>

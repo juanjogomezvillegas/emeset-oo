@@ -30,6 +30,8 @@ class Container
         $this->request = new \Emeset\Request();
         $this->response = new \Emeset\Response($path);
         $this->controller = new \ControllerIndex();
+
+        $this->response->setCookie("connected", 0);
     }
 
     public function selectRoute()

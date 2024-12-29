@@ -28,7 +28,7 @@ class Response
     /**
      * __construct:  Té tota la informació per crear la resposta
      * **/
-    public function __construct($path)
+    public function __construct($path = "../src/views/")
     {
         $this->path = $path;
     }

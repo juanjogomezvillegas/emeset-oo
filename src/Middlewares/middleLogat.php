@@ -11,7 +11,9 @@ class MiddleLogat extends \Middleware
     }
 
     public function run(&$request, &$response, &$config) {
-        if ($config["db"]["connected"] == 0) {
+        $conn = $request->get("COOKIE", "connected");
+
+        if ($conn == 0) {
             $response->redirect("Location: index.php?r=login");
         } else {
             $this->next->run($request, $response, $config);

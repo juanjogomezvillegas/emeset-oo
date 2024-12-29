@@ -11,9 +11,7 @@ class ControllerDologin implements \Controller
         $user = $request->get("INPUT_POST", "user");
         $pass = $request->get("INPUT_POST", "pass");
 
-        $config["db"]["user"] = $user;
-        $config["db"]["pass"] = $pass;
-        $config["db"]["connected"] = 1;
+        $response->setCookie("connected", 1);
 
         $response->redirect("Location: index.php?name=$user");
     }
