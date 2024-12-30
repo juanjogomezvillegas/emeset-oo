@@ -1,6 +1,6 @@
 <?php
 
-function MiddleLogat($request, $response, $container, $next)
+function Auth($request, $response, $container, $next)
 {
     if (!$request->has("SESSION", "connected")) {
         $response->setSession("connected", 0);

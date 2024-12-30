@@ -20,24 +20,23 @@ namespace Emeset;
 class Container
 {
     public $config = [];
+    private \Emeset\Http\Request $request;
+    private \Emeset\Http\Response $response;
 
-    public function __construct($config)
+    public function __construct($config, $path = "../src/views/")
     {
         $this->config = $config;
+        $this->request = new \Emeset\Http\Request();
+        $this->response = new \Emeset\Http\Response($path);
     }
 
     public function request()
     {
-        return new \Emeset\Http\Request();
+        return $this->request;
     }
 
-    public function response($path = "../src/views/")
+    public function response()
     {
-        return new \Emeset\Http\Response($path);
-    }
-
-    public function ruter()
-    {
-        return new \Emeset\Ruters\RuterParam($this);
+        return $this->response;
     }
 }

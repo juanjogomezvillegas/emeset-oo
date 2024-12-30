@@ -1,6 +1,6 @@
 <?php
 
-function ControllerIndex($request, $response, $container)
+function Index($request, $response, $container)
 {
     $name = $request->get("INPUT_GET", "name");
     

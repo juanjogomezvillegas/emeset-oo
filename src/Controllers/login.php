@@ -1,6 +1,6 @@
 <?php
 
-function ControllerLogin($request, $response, $container)
+function Login($request, $response, $container)
 {
     $response->setTemplate("login.php");
 

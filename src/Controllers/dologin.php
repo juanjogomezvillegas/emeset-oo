@@ -1,6 +1,6 @@
 <?php
 
-function ControllerDologin($request, $response, $container)
+function Dologin($request, $response, $container)
 {
     $user = $request->get("INPUT_POST", "user");
     $pass = $request->get("INPUT_POST", "pass");

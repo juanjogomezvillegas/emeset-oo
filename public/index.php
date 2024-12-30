@@ -15,16 +15,16 @@ if ($request->has("INPUT_REQUEST","r")) {
 // selecciona un controlador
 switch ($r) {
     case "":
-        $response = MiddleLogat($request, $response, $container, "ControllerIndex");
+        $response = Auth($request, $response, $container, "Index");
         break;
     case "login":
-        $response = ControllerLogin($request, $response, $container);
+        $response = Login($request, $response, $container);
         break;
     case "dologin":
-        $response = ControllerDologin($request, $response, $container);
+        $response = Dologin($request, $response, $container);
         break;
     case "logout":
-        $response = ControllerLogout($request, $response, $container);
+        $response = Logout($request, $response, $container);
         break;
     default:
         echo "Opció no vàlida.";
