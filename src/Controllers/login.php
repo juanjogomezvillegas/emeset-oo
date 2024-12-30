@@ -1,13 +1,8 @@
 <?php
 
-/**
- * strategy concret
- * **/
-class ControllerLogin implements \Controller
+function ControllerLogin($request, $response, $container)
 {
-    
-    public function run(&$request, &$response, &$config)
-    {
-        $response->setTemplate("login.php");
-    }
+    $response->setTemplate("login.php");
+
+    return $response;
 }

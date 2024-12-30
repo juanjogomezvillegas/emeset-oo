@@ -1,22 +1,18 @@
 <?php
 
-/**
- * Interfície dels middlewares
- * **/
-class MiddleLogat extends \Middleware
+function MiddleLogat($request, $response, $container, $next)
 {
-    public function __construct(\Controller $next)
-    {
-        parent::__construct($next);
+    if (!$request->has("SESSION", "connected")) {
+        $response->setSession("connected", 0);
     }
 
-    public function run(&$request, &$response, &$config) {
-        $conn = $request->get("COOKIE", "connected");
+    $conn = $request->get("SESSION", "connected");
 
-        if ($conn == 0) {
-            $response->redirect("Location: index.php?r=login");
-        } else {
-            $this->next->run($request, $response, $config);
-        }
+    if ($conn == 0) {
+        $response->redirect("Location: index.php?r=login");
+    } else {
+        $response = $next($request, $response, $container);
     }
+
+    return $response;
 }

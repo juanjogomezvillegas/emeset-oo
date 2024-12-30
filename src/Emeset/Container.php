@@ -19,61 +19,25 @@ namespace Emeset;
  **/
 class Container
 {
-    private $config;
-    private \Emeset\Request $request;
-    private \Emeset\Response $response;
-    private \Controller $controller;
+    public $config = [];
 
-    public function __construct($config, $path = "../src/views/")
+    public function __construct($config)
     {
         $this->config = $config;
-        $this->request = new \Emeset\Request();
-        $this->response = new \Emeset\Response($path);
-        $this->controller = new \ControllerIndex();
-
-        $this->response->setCookie("connected", 0);
     }
 
-    public function selectRoute()
+    public function request()
     {
-        // captura l'entrada
-        $r = '';
-        if ($this->request->has("INPUT_REQUEST","r")) {
-            $r = $this->request->getRaw("INPUT_REQUEST","r");
-        }
-
-        // selecciona un controlador
-        switch ($r) {
-            case "":
-                $this->changeController(new \MiddleLogat(new \ControllerIndex()));
-                break;
-            case "login":
-                $this->changeController(new \ControllerLogin());
-                break;
-            case "dologin":
-                $this->changeController(new \ControllerDologin());
-                break;
-            case "logout":
-                $this->changeController(new \ControllerLogout());
-                break;
-            default:
-                throw new \Exception("Opció no vàlida.");
-        }
-
-        // executa el controlador
-        $this->runController();
-
-        // retorna la resposta
-        $this->response->response();
+        return new \Emeset\Http\Request();
     }
 
-    private function runController()
+    public function response($path = "../src/views/")
     {
-        $this->controller->run($this->request, $this->response, $this->config);
+        return new \Emeset\Http\Response($path);
     }
 
-    private function changeController(\Controller $controller)
+    public function ruter()
     {
-        $this->controller = $controller;
+        return new \Emeset\Ruters\RuterParam($this);
     }
 }

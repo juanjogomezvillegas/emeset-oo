@@ -1,17 +1,12 @@
 <?php
 
-/**
- * strategy concret
- * **/
-class ControllerLogout implements \Controller
+function ControllerLogout($request, $response, $container)
 {
-    
-    public function run(&$request, &$response, &$config)
-    {
-        $config = $request->get("SESSION", "config");
+    $config = $request->get("SESSION", "config");
 
-        $response->setCookie("connected", 0);
+    $response->setSession("connected", 0);
 
-        $response->redirect("Location: index.php");
-    }
+    $response->redirect("Location: index.php");
+
+    return $response;
 }

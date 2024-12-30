@@ -2,27 +2,32 @@
 
 require_once "../src/config.php";
 
-/**
- * Classe index
- * **/
-class Index {
-    private \Emeset\Container $container;
+$container = new \Emeset\Container($config);
+$request = $container->request();
+$response = $container->response();
 
-    public function __construct($config)
-    {
-        $this->container = new \Emeset\Container($config);
-    }
-
-    public function frontControler()
-    {
-        try {
-            $this->container->selectRoute();
-        } catch (Exception $e) {
-            echo "Error! " . $e->getMessage() . "\n";
-        }
-    }
+// captura l'entrada
+$r = '';
+if ($request->has("INPUT_REQUEST","r")) {
+    $r = $request->getRaw("INPUT_REQUEST","r");
 }
 
-$index = new Index($config);
+// selecciona un controlador
+switch ($r) {
+    case "":
+        $response = MiddleLogat($request, $response, $container, "ControllerIndex");
+        break;
+    case "login":
+        $response = ControllerLogin($request, $response, $container);
+        break;
+    case "dologin":
+        $response = ControllerDologin($request, $response, $container);
+        break;
+    case "logout":
+        $response = ControllerLogout($request, $response, $container);
+        break;
+    default:
+        echo "Opció no vàlida.";
+}
 
-$index->frontControler();
+$response->response();

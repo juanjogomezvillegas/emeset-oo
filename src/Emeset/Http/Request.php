@@ -8,7 +8,7 @@
  * Classe gestiona la petició HTTP.
  **/
 
-namespace Emeset;
+namespace Emeset\Http;
 
 /**
 * Request: Classe gestiona la petició HTTP.

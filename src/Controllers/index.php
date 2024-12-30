@@ -1,17 +1,12 @@
 <?php
 
-/**
- * strategy concret
- * **/
-class ControllerIndex implements \Controller
+function ControllerIndex($request, $response, $container)
 {
+    $name = $request->get("INPUT_GET", "name");
     
-    public function run(&$request, &$response, &$config)
-    {
-        $name = $request->get("INPUT_GET", "name");
-        
-        $response->set("name", $name);
+    $response->set("name", $name);
 
-        $response->setTemplate("index.php");
-    }
+    $response->setTemplate("index.php");
+
+    return $response;
 }

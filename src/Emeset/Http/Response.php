@@ -8,7 +8,7 @@
  * Objecte que encapsula la resposta.
  **/
 
-namespace Emeset;
+namespace Emeset\Http;
 
 /**
  * Response: Objecte que encapsula la resposta.
@@ -39,14 +39,6 @@ class Response
     public function set($id, $value)
     {
         $this->values[$id] = $value;
-    }
-
-    /**
-     * get: obté un valor de l'entrada especificada amb el filtre indicat
-     * **/
-    public function get($id)
-    {
-        return $this->values[$id];
     }
 
     /**
