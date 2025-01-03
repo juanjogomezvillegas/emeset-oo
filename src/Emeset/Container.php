@@ -20,8 +20,9 @@ namespace Emeset;
 class Container
 {
     public $config = [];
-    private \Emeset\Http\Request $request;
-    private \Emeset\Http\Response $response;
+    public $sql;
+    public \Emeset\Http\Request $request;
+    public \Emeset\Http\Response $response;
 
     public function __construct($config, $path = "../src/views/")
     {
@@ -38,5 +39,17 @@ class Container
     public function response()
     {
         return $this->response;
+    }
+
+    public function dbConnection()
+    {
+        $this->sql = new \Db($this->config["db"]["user"], $this->config["db"]["pass"], $this->config["db"]["dbname"], $this->config["db"]["host"]);
+
+        return $this->sql;
+    }
+
+    public function dbLogin($user, $pass)
+    {
+        return ($this->config["db"]["user"] == $user && $this->config["db"]["pass"] == $pass);
     }
 }

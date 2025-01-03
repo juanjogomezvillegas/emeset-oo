@@ -11,10 +11,8 @@
             <div class="row">
                 <div class="col">
                     <p>El "Framework" per estudiants de 2n de DAW, millorat gràcies a l'assignatura enginyeria del software II de GEINF de la UdG.</p>
-                    <?php if (isset($name)) { ?>
-                        <p><?= $name; ?></p>
-                        <a href="http://192.168.0.10/emeset-oo/public/index.php?r=logout">logout</a>
-                    <?php } ?>
+                    <?= print_r($connection); ?>
+                    <a href="http://192.168.0.10/emeset-oo/public/index.php?r=logout">logout</a>
                 </div>
             </div>
         </div>

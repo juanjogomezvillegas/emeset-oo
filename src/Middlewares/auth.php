@@ -2,16 +2,12 @@
 
 function Auth($request, $response, $container, $next)
 {
-    if (!$request->has("SESSION", "connected")) {
-        $response->setSession("connected", 0);
-    }
+    $conn = $request->get("SESSION", "conn");
 
-    $conn = $request->get("SESSION", "connected");
-
-    if ($conn == 0) {
-        $response->redirect("Location: index.php?r=login");
-    } else {
+    if ($conn == 1) {
         $response = $next($request, $response, $container);
+    } else {
+        $response->redirect("Location: index.php?r=login");
     }
 
     return $response;

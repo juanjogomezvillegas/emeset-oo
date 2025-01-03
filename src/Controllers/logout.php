@@ -2,7 +2,7 @@
 
 function Logout($request, $response, $container)
 {
-    $response->setSession("connected", 0);
+    $response->setSession("conn", 0);
 
     $response->redirect("Location: index.php");
 

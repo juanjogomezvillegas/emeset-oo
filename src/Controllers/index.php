@@ -2,9 +2,16 @@
 
 function Index($request, $response, $container)
 {
-    $name = $request->get("INPUT_GET", "name");
-    
-    $response->set("name", $name);
+    $conn = $request->get("SESSION", "conn");
+
+    $connection = null;
+    if ($conn == 1) {
+        $connection = $container->dbConnection();
+    }
+
+    if ($connection != null) {
+        $response->set("connection", $connection);
+    }
 
     $response->setTemplate("index.php");
 
