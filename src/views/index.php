@@ -5,14 +5,25 @@
         <title>Bootstrap demo</title>
     </head>
 
-    <body>
-        <h1 class="text-center">Benvingut a Emeset millorat per GEINF!</h1>
-        <div class="container text-left">
+    <body class="bg-info-subtle">
+        <h1 class="text-center">Welcome to Emeset enhanced by GEINF!</h1>
+        <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>El "Framework" per estudiants de 2n de DAW, millorat gràcies a l'assignatura enginyeria del software II de GEINF de la UdG.</p>
-                    <?= print_r($connection); ?>
-                    <a href="http://192.168.0.10/emeset-oo/public/index.php?r=logout">logout</a>
+                    <div class="bg-info">
+                        <h2 class="">operations available</h2>
+                    </div>
+                    <br>
+                    <ul class="list-group">
+                        <li class="list-group-item bg-info-subtle">op1</li>
+                        <li class="list-group-item bg-info-subtle">op2</li>
+                        <li class="list-group-item bg-info-subtle">op3</li>
+                        <li class="list-group-item bg-info-subtle">op4</li>
+                    </ul>
+                    <br>
+                    <div class="bg-info">
+                        <a class="btn btn-info" href="http://192.168.0.10/emeset-oo/public/index.php?r=logout">logout</a>
+                    </div>
                 </div>
             </div>
         </div>

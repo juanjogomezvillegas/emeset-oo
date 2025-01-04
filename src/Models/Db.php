@@ -10,7 +10,8 @@ class Db
         try {
             $this->sql = new \PDO($dsn, $user, $pass);
         } catch (\PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
+            echo "Connection failed: " . $e->getMessage();
+            $this->sql = null;
         }
     }
 

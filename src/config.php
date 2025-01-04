@@ -3,9 +3,7 @@
 $config = array();
 
 $config["db"] = [];
-$config["db"]["user"] = "";
-$config["db"]["pass"] = "";
-$config["db"]["dbname"] = "";
+$config["db"]["dbname"] = "musica";
 $config["db"]["host"] = "localhost";
 
 // models

@@ -41,15 +41,10 @@ class Container
         return $this->response;
     }
 
-    public function dbConnection()
+    public function dbConnection($user, $pass)
     {
-        $this->sql = new \Db($this->config["db"]["user"], $this->config["db"]["pass"], $this->config["db"]["dbname"], $this->config["db"]["host"]);
+        $this->sql = new \Db($user, $pass, $this->config["db"]["dbname"], $this->config["db"]["host"]);
 
         return $this->sql;
-    }
-
-    public function dbLogin($user, $pass)
-    {
-        return ($this->config["db"]["user"] == $user && $this->config["db"]["pass"] == $pass);
     }
 }

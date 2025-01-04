@@ -5,8 +5,10 @@ function Dologin($request, $response, $container)
     $user = $request->get("INPUT_POST", "user");
     $pass = $request->get("INPUT_POST", "pass");
     $conn = 0;
+    
+    $connection = $container->dbConnection($user, $pass);
 
-    if ($container->dbLogin($user, $pass)) {
+    if ($connection->getConnection() != null) {
         $conn = 1;
     }
 
@@ -14,6 +16,8 @@ function Dologin($request, $response, $container)
         $response->redirect("Location: index.php?r=login&error=1");
     } else {
         $response->setSession("conn", $conn);
+        $response->setSession("user", $user);
+        $response->setSession("pass", $pass);
 
         $response->redirect("Location: index.php");
     }
