@@ -19,16 +19,26 @@ namespace Emeset;
  **/
 class Container
 {
+    private static \Emeset\Container $container;
     public $config = [];
     public $sql;
     public \Emeset\Http\Request $request;
     public \Emeset\Http\Response $response;
+    public $controller = "";
+    public $middleware = "";
 
-    public function __construct($config, $path = "../src/views/")
+    private function __construct($config, $path = "../src/views/")
     {
         $this->config = $config;
         $this->request = new \Emeset\Http\Request();
         $this->response = new \Emeset\Http\Response($path);
+    }
+
+    public static function instance($config)
+    {
+        \Emeset\Container::$container = new \Emeset\Container($config);
+
+        return \Emeset\Container::$container;
     }
 
     public function request()
@@ -39,6 +49,25 @@ class Container
     public function response()
     {
         return $this->response;
+    }
+
+    public function setRoute($controller, $middleware = "")
+    {
+        $this->controller = $controller;
+        $this->middleware = $middleware;
+    }
+
+    public function run($request, $response, $container)
+    {
+        if ($this->middleware == "") {
+            $aux = $this->controller;
+            $this->response = $aux($request, $response, $container);
+        } else {
+            $aux = $this->middleware;
+            $this->response = $aux($request, $response, $container, $this->controller);
+        }
+
+        $this->response->response();
     }
 
     public function dbConnection($user, $pass)

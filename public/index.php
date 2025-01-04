@@ -2,7 +2,7 @@
 
 require_once "../src/config.php";
 
-$container = new \Emeset\Container($config);
+$container = \Emeset\Container::instance($config);
 $request = $container->request();
 $response = $container->response();
 
@@ -15,19 +15,19 @@ if ($request->has("INPUT_REQUEST","r")) {
 // selecciona un controlador
 switch ($r) {
     case "":
-        $response = Auth($request, $response, $container, "Index");
+        $container->setRoute("Index", "Auth");
         break;
     case "login":
-        $response = Login($request, $response, $container);
+        $container->setRoute("Login");
         break;
     case "dologin":
-        $response = Dologin($request, $response, $container);
+        $container->setRoute("Dologin");
         break;
     case "logout":
-        $response = Logout($request, $response, $container);
+        $container->setRoute("Logout");
         break;
     default:
-        echo "Opció no vàlida.";
+        throw new Exception("Opció no vàlida.");
 }
 
-$response->response();
+$container->run($request, $response, $container);

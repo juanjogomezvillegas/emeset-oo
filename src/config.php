@@ -3,7 +3,7 @@
 $config = array();
 
 $config["db"] = [];
-$config["db"]["dbname"] = "musica";
+$config["db"]["dbname"] = "dbname";
 $config["db"]["host"] = "localhost";
 
 // models
