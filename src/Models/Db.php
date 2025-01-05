@@ -1,22 +1,16 @@
 <?php
 
-class Db
+interface Db
 {
-    public $sql;
+    function connection($user, $pass, $db, $host);
 
-    public function __construct($user, $pass, $db, $host)
-    {
-        $dsn = "mysql:dbname={$db};host={$host}";
-        try {
-            $this->sql = new \PDO($dsn, $user, $pass);
-        } catch (\PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
-            $this->sql = null;
-        }
-    }
+    function getConnection();
 
-    public function getConnection()
-    {
-        return $this->sql;
-    }
+    function select($query);
+
+    function insert($insert);
+
+    function update($update);
+
+    function delete($delete);
 }

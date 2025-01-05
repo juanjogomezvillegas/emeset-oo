@@ -2,12 +2,16 @@
 
 $config = array();
 
+$config["title"] = "Framework Emeset";
+$config["author"] = "Juan José Gómez Villegas";
+$config["version"] = "lite 1.0 of 2024-2025";
 $config["db"] = [];
-$config["db"]["dbname"] = "dbname";
+$config["db"]["dbname"] = "musica";
 $config["db"]["host"] = "localhost";
 
 // models
 require_once "../src/Models/Db.php";
+require_once "../src/Models/DbPdo.php";
 
 // controladors
 require_once "../src/Controllers/index.php";

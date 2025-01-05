@@ -8,7 +8,7 @@ function Dologin($request, $response, $container)
     
     $connection = $container->dbConnection($user, $pass);
 
-    if ($connection->getConnection() != null) {
+    if ($connection != null) {
         $conn = 1;
     }
 

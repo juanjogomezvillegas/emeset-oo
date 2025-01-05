@@ -10,6 +10,8 @@
 
 namespace Emeset;
 
+use Db;
+
 /**
  * Container: Classe contenidor.
  *
@@ -32,6 +34,7 @@ class Container
         $this->config = $config;
         $this->request = new \Emeset\Http\Request();
         $this->response = new \Emeset\Http\Response($path);
+        $this->sql = new \DbPdo();
     }
 
     public static function instance($config)
@@ -72,8 +75,8 @@ class Container
 
     public function dbConnection($user, $pass)
     {
-        $this->sql = new \Db($user, $pass, $this->config["db"]["dbname"], $this->config["db"]["host"]);
+        $this->sql->connection($user, $pass, $this->config["db"]["dbname"], $this->config["db"]["host"]);
 
-        return $this->sql;
+        return $this->sql->getConnection();
     }
 }
