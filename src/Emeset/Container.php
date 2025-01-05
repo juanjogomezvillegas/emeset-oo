@@ -23,15 +23,17 @@ class Container
 {
     private static \Emeset\Container $container;
     public $config = [];
+    public $controllers = [];
+    public $controller = "";
+    public $middleware = "";
     public $sql;
     public \Emeset\Http\Request $request;
     public \Emeset\Http\Response $response;
-    public $controller = "";
-    public $middleware = "";
 
     private function __construct($config, $path = "../src/views/")
     {
         $this->config = $config;
+        $this->controllers = $config["routes"];
         $this->request = new \Emeset\Http\Request();
         $this->response = new \Emeset\Http\Response($path);
         $this->sql = new \DbPdo();
@@ -54,10 +56,10 @@ class Container
         return $this->response;
     }
 
-    public function setRoute($controller, $middleware = "")
+    public function setRoute($r = "home", $middleware = "")
     {
-        $this->controller = $controller;
         $this->middleware = $middleware;
+        $this->controller = $this->controllers[$r];
     }
 
     public function run($request, $response, $container)

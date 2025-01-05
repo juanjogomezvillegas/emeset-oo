@@ -7,7 +7,7 @@ $request = $container->request();
 $response = $container->response();
 
 // captura l'entrada
-$r = '';
+$r = "";
 if ($request->has("INPUT_REQUEST","r")) {
     $r = $request->getRaw("INPUT_REQUEST","r");
 }
@@ -15,16 +15,10 @@ if ($request->has("INPUT_REQUEST","r")) {
 // selecciona un controlador
 switch ($r) {
     case "":
-        $container->setRoute("Index", "Auth");
+        $container->setRoute("home", "Auth");
         break;
-    case "login":
-        $container->setRoute("Login");
-        break;
-    case "dologin":
-        $container->setRoute("Dologin");
-        break;
-    case "logout":
-        $container->setRoute("Logout");
+    case "login" || "dologin" || "logout":
+        $container->setRoute($r);
         break;
     default:
         throw new Exception("Opció no vàlida.");

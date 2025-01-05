@@ -6,8 +6,13 @@ $config["title"] = "Framework Emeset";
 $config["author"] = "Juan José Gómez Villegas";
 $config["version"] = "lite 1.0 of 2024-2025";
 $config["db"] = [];
-$config["db"]["dbname"] = "musica";
+$config["db"]["dbname"] = "--";
 $config["db"]["host"] = "localhost";
+$config["routes"] = [];
+$config["routes"]["home"] = "Index";
+$config["routes"]["login"] = "Login";
+$config["routes"]["dologin"] = "Dologin";
+$config["routes"]["logout"] = "Logout";
 
 // models
 require_once "../src/Models/Db.php";
