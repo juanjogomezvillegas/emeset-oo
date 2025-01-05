@@ -59,7 +59,7 @@ class Container
     public function setRoute($r = "home", $middleware = "")
     {
         $this->middleware = $middleware;
-        $this->controller = $this->controllers[$r];
+        $this->controller = $this->controllers[$r][0];
     }
 
     public function run($request, $response, $container)

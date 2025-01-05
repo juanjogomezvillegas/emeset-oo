@@ -9,10 +9,10 @@ $config["db"] = [];
 $config["db"]["dbname"] = "--";
 $config["db"]["host"] = "localhost";
 $config["routes"] = [];
-$config["routes"]["home"] = "Index";
-$config["routes"]["login"] = "Login";
-$config["routes"]["dologin"] = "Dologin";
-$config["routes"]["logout"] = "Logout";
+$config["routes"]["home"] = ["Index", "Auth"];
+$config["routes"]["login"] = ["Login", ""];
+$config["routes"]["dologin"] = ["Dologin", ""];
+$config["routes"]["logout"] = ["Logout", ""];
 
 // models
 require_once "../src/Models/Db.php";

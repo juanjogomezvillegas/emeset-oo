@@ -10,18 +10,12 @@ $response = $container->response();
 $r = "";
 if ($request->has("INPUT_REQUEST","r")) {
     $r = $request->getRaw("INPUT_REQUEST","r");
+} else {
+    $r = "home";
 }
 
-// selecciona un controlador
-switch ($r) {
-    case "":
-        $container->setRoute("home", "Auth");
-        break;
-    case "login" || "dologin" || "logout":
-        $container->setRoute($r);
-        break;
-    default:
-        throw new Exception("Opció no vàlida.");
-}
+// estableix una ruta
+$container->setRoute($r, $config["routes"][$r][1]);
 
+// executa una ruta
 $container->run($request, $response, $container);
