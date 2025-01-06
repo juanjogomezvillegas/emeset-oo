@@ -2,9 +2,9 @@
 
 require_once "../src/config.php";
 
-$container = \Emeset\Container::instance($config);
-$request = $container->request();
-$response = $container->response();
+$emeset = new \Emeset\Emeset($config);
+$request = $emeset->request();
+$response = $emeset->response();
 
 // captura l'entrada
 $r = "";
@@ -15,7 +15,7 @@ if ($request->has("INPUT_REQUEST","r")) {
 }
 
 // estableix una ruta
-$container->setRoute($r, $config["routes"][$r][1]);
+$emeset->setRoute($r, $config["routes"][$r][1]);
 
 // executa una ruta
-$container->run($request, $response, $container);
+$emeset->run($request, $response, $emeset);

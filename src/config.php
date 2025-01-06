@@ -31,3 +31,4 @@ require_once "../src/Middlewares/auth.php";
 require_once "../src/Emeset/Http/Request.php";
 require_once "../src/Emeset/Http/Response.php";
 require_once "../src/Emeset/Container.php";
+require_once "../src/Emeset/Emeset.php";
