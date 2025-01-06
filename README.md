@@ -10,9 +10,9 @@ Aquesta versió intenta millorar l'antiga versió, ja que ara ha estat dissenyat
 
 ## Kernel
 
-El nucli del framework són les classes request i response, que contenen una petició i una resposta, i serà responsabilitat del container (contenidor) instanciar aquestes dues classes, *a més d'altres classes*. També aplicant una variant del patró **Singleton**, la responsabilitat d'instanciat el container la té la propia classe Container.
+El nucli del framework són les classes request i response, que contenen una petició i una resposta, i serà responsabilitat del container (contenidor) instanciar aquestes dues classes, *a més d'altres classes*. i per tal de quan s'afegeixen nous models no haver d'editar el contenidor, els nous models s'instancien a la classe emeset que hereta de contenidor.
 
-Des de la part pública només s'interacciona amb el container, i a partir del paràmetre **r** de tipus get, carrega un controlador o un altre.
+Des de la part pública només s'interacciona amb la classe emeset (filla del container), i a partir del paràmetre **r** de tipus get, carrega un controlador o un altre. Els controladors és declaren al fitxer config.php.
 
 ## Controladors
 
