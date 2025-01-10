@@ -28,6 +28,11 @@
                         <label for="idPass">Password</label>
                     </div>
                     <br>
+                    <div class="form-floating">
+                        <input type="text" name="dbname" id="idDbName" value="<?= $dbname; ?>" class="form-control">
+                        <label for="idDbName">DB Name</label>
+                    </div>
+                    <br>
                     <input type="submit" name="send" value="login" class="btn btn-primary form-control">
                 </div>
                 <div class="col"></div>

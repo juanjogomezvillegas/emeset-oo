@@ -7,8 +7,9 @@ function Auth($request, $response, $container, $next)
     if ($conn == 1) {
         $user = $request->get("SESSION", "user");
         $pass = $request->get("SESSION", "pass");
+        $dbname = $request->get("SESSION", "dbname");
 
-        $connection = $container->dbConnection($user, $pass);
+        $connection = $container->dbConnection($user, $pass, $dbname);
 
         $response->set("connection", $connection);
 

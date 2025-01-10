@@ -65,9 +65,9 @@ class Container
         $this->response->response();
     }
 
-    public function dbConnection($user, $pass)
+    public function dbConnection($user, $pass, $dbname)
     {
-        $this->sql->connection($user, $pass, $this->config["db"]["dbname"], $this->config["db"]["host"]);
+        $this->sql->connection($user, $pass, $dbname, $this->config["db"]["host"]);
 
         return $this->sql->getConnection();
     }

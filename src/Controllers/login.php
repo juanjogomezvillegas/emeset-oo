@@ -8,6 +8,8 @@ function Login($request, $response, $container)
         $response->set("error", $error);
     }
 
+    $response->set("dbname", $container->config["db"]["dbname"]);
+
     $response->setTemplate("login.php");
 
     return $response;

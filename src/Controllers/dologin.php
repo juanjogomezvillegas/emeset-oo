@@ -4,9 +4,10 @@ function Dologin($request, $response, $container)
 {
     $user = $request->get("INPUT_POST", "user");
     $pass = $request->get("INPUT_POST", "pass");
+    $dbname = $request->get("INPUT_POST", "dbname");
     $conn = 0;
     
-    $connection = $container->dbConnection($user, $pass);
+    $connection = $container->dbConnection($user, $pass, $dbname);
 
     if ($connection != null) {
         $conn = 1;
@@ -18,6 +19,7 @@ function Dologin($request, $response, $container)
         $response->setSession("conn", $conn);
         $response->setSession("user", $user);
         $response->setSession("pass", $pass);
+        $response->setSession("dbname", $dbname);
 
         $response->redirect("Location: index.php");
     }
